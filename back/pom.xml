@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ufms</groupId>
-	<artifactId>back</artifactId>
+	<artifactId>progweb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>progweb</name>
 	<description>Trabalho final de programação web</description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
