@@ -1,0 +1,17 @@
+{
+  "name": "MySneaker",
+  "short_name": "MySneaker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#252525",
+  "theme_color": "#252525",
+  "description": "A loja de tênis mais completa do Brasil",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icons/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
