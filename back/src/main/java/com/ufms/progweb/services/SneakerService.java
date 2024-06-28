@@ -1,6 +1,9 @@
 package com.ufms.progweb.services;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ufms.progweb.model.Sneaker;
@@ -29,6 +32,10 @@ public class SneakerService {
 
     public void deleteSneaker(Long id) {
         sneakerRepository.deleteById(id);
+    }
+
+    public List<Sneaker> filteSneakers(String size, String brand, String model) {
+        return sneakerRepository.findByCriteria(size, brand, model);
     }
 
     public Sneaker searchById(Long id) {

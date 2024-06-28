@@ -21,40 +21,18 @@ public class Sneaker {
     private String name;
 
     @Column
+    private String brand;
+
+    @Column
+    private String model;
+
+    @Column
+    private Integer size;
+
+    @Column
     private BigDecimal price;
 
     @Column
     private String description;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }
