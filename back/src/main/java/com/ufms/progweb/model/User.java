@@ -7,51 +7,51 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class Usuario {
+public class User {
 
     @Id
     @Column
     private Long id;
 
     @Column
-    private String nome;
+    private String name;
 
     @Column
     private String email;
 
     @Column
-    private String senha;
+    private String password;
 
     // Getters e Setters
     public Long getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

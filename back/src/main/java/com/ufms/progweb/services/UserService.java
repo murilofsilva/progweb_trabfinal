@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.ufms.progweb.model.Usuario;
-import com.ufms.progweb.repository.UsuarioRepository;
+import com.ufms.progweb.model.User;
+import com.ufms.progweb.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -14,37 +14,37 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UserRepository userRepository;
 
-    public Usuario salvarUsuario(Usuario usuario) {
-        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
-        return usuarioRepository.save(usuario);
+    public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
 
-    public Usuario atualizarUsuario(Long id, Usuario usuarioDetails) {
-        Usuario usuario = usuarioRepository.findById(id).orElse(null);
-        if (usuario != null) {
-            usuario.setNome(usuarioDetails.getNome());
-            usuario.setEmail(usuarioDetails.getEmail());
-            usuario.setSenha(passwordEncoder.encode(usuarioDetails.getSenha()));
-            return usuarioRepository.save(usuario);
+    public User updateUser(Long id, User userDetails) {
+        User user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            user.setName(userDetails.getName());
+            user.setEmail(userDetails.getEmail());
+            user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+            return userRepository.save(user);
         }
         return null;
     }
 
-    public void deletarUsuario(Long id) {
-        usuarioRepository.deleteById(id);
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
-    public Usuario buscarUsuarioPorId(Long id) {
-        return usuarioRepository.findById(id).orElse(null);
+    public User searchById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 
-    public Iterable<Usuario> buscarTodosUsuarios() {
-        return usuarioRepository.findAll();
+    public Iterable<User> searchAllUsers() {
+        return userRepository.findAll();
     }
 
-    public Usuario buscarUsuarioPorEmail(String email) {
-        return usuarioRepository.findByEmail(email);
+    public User searchByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
