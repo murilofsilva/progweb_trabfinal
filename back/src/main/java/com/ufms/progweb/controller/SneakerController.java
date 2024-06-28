@@ -51,7 +51,7 @@ public class SneakerController {
         }
     }
     
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Sneaker> getSneakerByName(@RequestBody String name) {
         Sneaker sneaker = sneakerService.searchByName(name);
         if (sneaker != null) {
@@ -61,7 +61,7 @@ public class SneakerController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<List<Sneaker>> getAllSneakers() {
         List<Sneaker> sneakers = (List<Sneaker>) sneakerService.searchAllSneakers();
         return new ResponseEntity<>(sneakers, HttpStatus.OK);
