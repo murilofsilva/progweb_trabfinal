@@ -1,43 +1,50 @@
 package com.ufms.progweb.services;
 
-import java.sql.*;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.ufms.progweb.model.Usuario;
+import com.ufms.progweb.repository.UsuarioRepository;
 
 @Service
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
+    private UsuarioRepository usuarioRepository;
+
+    public Usuario salvarUsuario(Usuario usuario) {
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+        return usuarioRepository.save(usuario);
     }
 
-    public void criptografarSenha(Long id, String novaSenha) {
-        String senhaCriptografada = passwordEncoder.encode(novaSenha);
-        String url = "jdbc:postgresql://localhost:5432/progwebdb";
-        String user = "postgres";
-        String password = "mur123";
-
-        try (Connection connection = DriverManager.getConnection(url, user, password);
-             PreparedStatement selectStmt = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
-             PreparedStatement updateStmt = connection.prepareStatement("UPDATE users SET password = ? WHERE id = ?")) {
-            
-            selectStmt.setLong(1, id);
-            ResultSet resultSet = selectStmt.executeQuery();
-
-            if (resultSet.next()) {
-                updateStmt.setString(1, senhaCriptografada);
-                updateStmt.setLong(2, id);
-                updateStmt.executeUpdate();
-            } else {
-                throw new SQLException("Usuário não encontrado");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Usuario atualizarUsuario(Long id, Usuario usuarioDetails) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuario.setNome(usuarioDetails.getNome());
+            usuario.setEmail(usuarioDetails.getEmail());
+            usuario.setSenha(passwordEncoder.encode(usuarioDetails.getSenha()));
+            return usuarioRepository.save(usuario);
         }
+        return null;
+    }
+
+    public void deletarUsuario(Long id) {
+        usuarioRepository.deleteById(id);
+    }
+
+    public Usuario buscarUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
+    public Iterable<Usuario> buscarTodosUsuarios() {
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario buscarUsuarioPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
     }
 }
