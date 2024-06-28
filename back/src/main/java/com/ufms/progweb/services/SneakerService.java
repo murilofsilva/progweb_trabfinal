@@ -19,9 +19,9 @@ public class SneakerService {
     public Sneaker updateSneaker(Long id, Sneaker sneakerDetails) {
         Sneaker sneaker = sneakerRepository.findById(id).orElse(null);
         if (sneaker != null) {
-            sneaker.setNome(sneakerDetails.getNome());
-            sneaker.setPreco(sneakerDetails.getPreco());
-            sneaker.setDescricao(sneakerDetails.getDescricao());
+            sneaker.setName(sneakerDetails.getName());
+            sneaker.setPrice(sneakerDetails.getPrice());
+            sneaker.setDescription(sneakerDetails.getDescription());
             return sneakerRepository.save(sneaker);
         }
         return null;

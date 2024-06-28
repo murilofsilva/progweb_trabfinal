@@ -18,44 +18,43 @@ public class Sneaker {
     private Long id;
 
     @Column
-    private String nome;
+    private String name;
 
     @Column
-    private BigDecimal preco;
+    private BigDecimal price;
 
     @Column
-    private String descricao;
+    private String description;
 
-    // Getters e Setters
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setPreco(BigDecimal preco) {
-        this.preco = preco;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public BigDecimal getPreco() {
-        return preco;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 }
