@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SneakerRepository extends JpaRepository<Sneaker, Long> {
-
+    Sneaker findByName(String name);
 }

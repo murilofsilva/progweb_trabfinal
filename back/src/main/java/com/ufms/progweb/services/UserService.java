@@ -40,11 +40,15 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public Iterable<User> searchAllUsers() {
-        return userRepository.findAll();
+    public User searchByName(String name) {
+        return userRepository.findByName(name);
     }
 
     public User searchByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Iterable<User> searchAllUsers() {
+        return userRepository.findAll();
     }
 }
