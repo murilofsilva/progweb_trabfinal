@@ -49,7 +49,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{name}")
     public ResponseEntity<User> getUserByName(@RequestBody String name) {
         User user = userService.searchByName(name);
         if (user != null) {
