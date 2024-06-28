@@ -61,6 +61,12 @@ public class SneakerController {
         }
     }
 
+    @GetMapping("/filter/{size}/{brand}/{model}")
+    public ResponseEntity<List<Sneaker>> getSneakerByFilter(@RequestBody String size, String brand, String model) {
+        List<Sneaker> sneakers = (List<Sneaker>) sneakerService.filterSneakers(size, brand, model);
+        return new ResponseEntity<>(sneakers, HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<Sneaker>> getAllSneakers() {
         List<Sneaker> sneakers = (List<Sneaker>) sneakerService.searchAllSneakers();

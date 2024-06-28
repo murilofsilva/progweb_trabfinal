@@ -34,7 +34,7 @@ public class SneakerService {
         sneakerRepository.deleteById(id);
     }
 
-    public List<Sneaker> filteSneakers(String size, String brand, String model) {
+    public List<Sneaker> filterSneakers(String size, String brand, String model) {
         return sneakerRepository.findByCriteria(size, brand, model);
     }
 
