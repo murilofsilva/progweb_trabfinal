@@ -61,7 +61,7 @@ public class SneakerController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<List<Sneaker>> getAllSneakers() {
         List<Sneaker> sneakers = (List<Sneaker>) sneakerService.searchAllSneakers();
         return new ResponseEntity<>(sneakers, HttpStatus.OK);
