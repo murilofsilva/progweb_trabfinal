@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="/public/manifest.json">
+    <link rel="icon" href="/public/icons/icon.png">
+
+    <meta name="theme-color" content="#252525">
+    <meta name="description" content="MySneaker é a sua loja de tênis online">
+    <meta name="keywords" content="tênis, sneaker, moda, estilo, lançamento">
+    <meta name="author" content="MySneaker">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="language" content="Portuguese">
+
+    <link rel="apple-touch-icon" href="/public/icons/icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySneaker">
+
+    <title>MySneaker</title>
+</head>
+<body>
+    <header class="page-header">
+        <div class="page-header-content">
+            <div class="page-header-title-container">
+                <a href="/">
+                    <h1 class="page-header-title">MySneaker</h1>
+                </a>
+            </div>
+            <div class="page-header-nav-container">
+                <nav class="page-header-nav">
+                    <ul class="page-header-nav-list">
+                        <li class="page-header-nav-item">
+                            <a href="#" class="page-header-nav-link">MASCULINO</a>
+                        </li>
+                        <li class="page-header-nav-item">
+                            <a href="#" class="page-header-nav-link">FEMININO</a>
+                        </li>
+                        <li class="page-header-nav-item">
+                            <a href="#" class="page-header-nav-link">OFERTAS</a>
+                        </li>
+                        <li class="gg-profile">
+                            <a href="#"></a>
+                        </li> 
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="filter-and-search">
+            <form action="#" th:action="@{/filter}" method="get">
+                <div class="filter">
+                    <select class="select-filter" name="tamanho" id="tamanho">
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                    </select>
+                    <select class="select-filter" name="marca" id="marca">
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Puma">Puma</option>
+                    </select>
+                    <select class="select-filter" name="modelo" id="modelo">
+                        <option value="Air Force 1">Air Force 1</option>
+                        <option value="Air Jordan 1">Air Jordan 1</option>
+                        <option value="Stan Smith">Stan Smith</option>
+                    </select>
+                    <button class="confirm-filter" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                            <path d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zm1 4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1z"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+            <div class="search-box">
+                <input class="search" type="text" name="search" placeholder="Buscar">
+                <button class="confirm-search" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="product-card-container">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
+                </div>
+                <h3>Air Jordan 1 Low</h3>
+                <h3>R$1090,00</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/jordan_max_aura_5.png" alt="jordan_max_aura" />
+                </div>
+                <h3>Jordan Max Aura 5</h3>
+                <h3>R$1120,00</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/lebron_witness_8.png" alt="lebron_witness_8" />
+                </div>
+                <h3>LeBron Witness 8</h3>
+                <h3>R$670,00</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
+                </div>
+                <h3>Produto 4</h3>
+                <h3>Valor</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
+                </div>
+                <h3>Produto 5</h3>
+                <h3>Valor</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
+                </div>
+                <h3>Produto 6</h3>
+                <h3>Valor</h3>
+                <button class="add-to-cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
