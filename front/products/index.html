@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +50,7 @@
                                 <div class="profile-dropdown">
                                     <button onclick="toggleDropdown()">PERFIL</button>
                                     <div id="dropdown-menu" class="dropdown-content">
-                                        <a href="#"></a>
+                                        <a href="#">Login</a>
                                         <a href="#">Sair</a>
                                     </div>
                                 </div>
@@ -101,79 +100,7 @@
                 </button>
             </div>
         </div>
-        <div class="product-card-container">
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
-                </div>
-                <h3>Air Jordan 1 Low</h3>
-                <h3>R$1090,00</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/jordan_max_aura_5.png" alt="jordan_max_aura" />
-                </div>
-                <h3>Jordan Max Aura 5</h3>
-                <h3>R$1120,00</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/lebron_witness_8.png" alt="lebron_witness_8" />
-                </div>
-                <h3>LeBron Witness 8</h3>
-                <h3>R$670,00</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
-                </div>
-                <h3>Produto 4</h3>
-                <h3>Valor</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
-                </div>
-                <h3>Produto 5</h3>
-                <h3>Valor</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="/resources/public/image/jordan1.png" alt="green_dunk_low" />
-                </div>
-                <h3>Produto 6</h3>
-                <h3>Valor</h3>
-                <button class="add-to-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                    </svg>
-                </button>
-            </div>
+        <div class="product-card-container" id="product-card-container">
         </div>
     </div>
     <script src="script.js"></script>
