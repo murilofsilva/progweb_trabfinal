@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="/public/manifest.json">
+    <link rel="icon" href="/public/icons/icon.png">
+
+    <meta name="theme-color" content="#252525">
+    <meta name="description" content="MySneaker é a sua loja de tênis online">
+    <meta name="keywords" content="tênis, sneaker, moda, estilo, lançamento">
+    <meta name="author" content="MySneaker">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="language" content="Portuguese">
+
+    <link rel="apple-touch-icon" href="/public/icons/icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MySneaker">
+
+    <title>Cadastro de Produto - MySneaker</title>
+</head>
+<body>
+<header class="page-header">
+    <div class="page-header-content">
+        <div class="page-header-title-container">
+            <a href="#">
+                <h1 class="page-header-title">MySneaker</h1>
+            </a>
+        </div>
+        <div class="page-header-nav-container">
+            <nav class="page-header-nav">
+                <ul class="page-header-nav-list">
+                    <li class="page-header-nav-item">
+                        <a href="#" class="page-header-nav-link">Masculino</a>
+                    </li>
+                    <li class="page-header-nav-item">
+                        <a href="#" class="page-header-nav-link">Feminino</a>
+                    </li>
+                    <li class="page-header-nav-item">
+                        <a href="#" class="page-header-nav-link">Ofertas</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="product-form-section">
+        <div class="form-container">
+            <h2 class="form-title">Cadastro de Sneaker</h2>
+            <form class="user-form">
+                <div class="form-group">
+                    <label for="product-name">Nome do Sneaker:</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-brand">Marca do Sneaker:</label>
+                    <input type="text" id="product-brand" name="product-brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-model">Modelo do Sneaker:</label>
+                    <input type="text" id="product-model" name="product-model" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Descrição:</label>
+                    <textarea id="product-description" name="product-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Preço:</label>
+                    <input type="number" id="product-price" name="product-price" required>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label for="product-category">Categoria:</label>
+                    <select id="product-category" name="product-category" required>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="ofertas">Ofertas</option>
+                    </select>
+                </div>
+                !-->
+                <div class="form-group">
+                    <label for="product-image">Imagem do Produto:</label>
+                    <input type="file" id="product-image" name="product-image" accept="image/*" required>
+                </div>
+                <button type="submit" class="form-button">Cadastrar Produto</button>
+            </form>
+        </div>
+    </section>
+</main>
+</body>
+</html>
