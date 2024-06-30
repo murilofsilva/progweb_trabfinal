@@ -1,14 +1,14 @@
 package com.ufms.progweb.controller;
 
+import com.ufms.progweb.model.User;
+import com.ufms.progweb.repository.UserRepository;
+import com.ufms.progweb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import com.ufms.progweb.model.User;
-import com.ufms.progweb.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -18,12 +18,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository repository;
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userService.saveUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        repository.save(user);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    
+
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User updatedUser = userService.updateUser(id, userDetails);
@@ -65,5 +68,5 @@ public class UserController {
         List<User> users = (List<User>) userService.searchAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
-  
+
 }
