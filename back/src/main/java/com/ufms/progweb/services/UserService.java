@@ -1,11 +1,12 @@
 package com.ufms.progweb.services;
 
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.ufms.progweb.model.User;
 import com.ufms.progweb.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import static com.ufms.progweb.utils.StringUtils.isNullOrEmpty;
 
 @Service
 public class UserService {
@@ -16,8 +17,23 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public User createUser(User user) throws Exception {
+        if (isNullOrEmpty(user.getName())) {
+            throw new Exception("Nome não pode ser nulo");
+        }
+        if (isNullOrEmpty(user.getEmail())) {
+            throw new Exception("Email não pode ser nulo");
+        }
+        if (isNullOrEmpty(user.getPassword())) {
+            throw new Exception("Senha não pode ser nula");
+        }
+
+        boolean usuarioJaExistente = userRepository.findByEmail(user.getEmail()) != null;
+
+        if (usuarioJaExistente) {
+            throw new Exception("Impossível cadastrar usuário. O mesmo já existe na base de dados!");
+        }
+
         return userRepository.save(user);
     }
 

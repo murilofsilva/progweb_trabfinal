@@ -22,8 +22,8 @@ public class UserController {
     private UserRepository repository;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        repository.save(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) throws Exception {
+        userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
