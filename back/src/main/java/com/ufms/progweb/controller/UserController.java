@@ -21,10 +21,15 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
-    @PostMapping
+    @PostMapping(path = "register")
     public ResponseEntity<User> createUser(@RequestBody User user) throws Exception {
         userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping(path = "login")
+    public User login(@RequestBody User user) throws Exception {
+        return userService.login(user);
     }
 
     @PutMapping("/{id}")

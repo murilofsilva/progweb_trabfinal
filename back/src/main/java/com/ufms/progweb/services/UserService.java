@@ -37,6 +37,25 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User login(User user) throws Exception {
+        if (isNullOrEmpty(user.getEmail())) {
+            throw new Exception("Email não pode ser nulo");
+        }
+        if (isNullOrEmpty(user.getPassword())) {
+            throw new Exception("Senha não pode ser nula");
+        }
+
+        User usuario = userRepository.findByEmail(user.getEmail());
+        if (usuario == null) {
+            throw new Exception("Usuário não encontrado na base de dados");
+        }
+
+        if (!usuario.getPassword().equals(user.getPassword())) {
+            throw new Exception("As senhas não correspondem");
+        }
+
+        return user;
+    }
     public User updateUser(Long id, User userDetails) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {

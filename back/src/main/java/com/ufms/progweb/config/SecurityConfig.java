@@ -19,7 +19,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/", "/sneakers", "/usuarios", "/filter", "/resources/**", "/static/**", "/images/**", "/icons/**", "/public/**").permitAll()
+                                .requestMatchers("/", "/sneakers", "/sneakers/*", "/usuarios/**",
+                                        "/usuarios", "/filter", "/resources/**", "/static/**", "/images/**", "/icons/**", "/public/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
