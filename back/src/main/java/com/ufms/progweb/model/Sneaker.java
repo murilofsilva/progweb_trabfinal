@@ -1,19 +1,17 @@
 package com.ufms.progweb.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Entity
 @Data
-@Table
+@Entity(name = "sneaker")
+@Table(name = "sneaker")
 public class Sneaker {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
