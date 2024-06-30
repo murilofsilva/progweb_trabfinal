@@ -11,6 +11,7 @@ import com.ufms.progweb.model.User;
 import com.ufms.progweb.services.UserService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/usuarios")
 public class UserController {
 

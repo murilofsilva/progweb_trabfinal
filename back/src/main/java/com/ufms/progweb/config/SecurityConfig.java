@@ -1,4 +1,4 @@
-package com.ufms.progweb;
+package com.ufms.progweb.config;
 
 
 import javax.sql.DataSource;
@@ -22,8 +22,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                                .requestMatchers("/", "/sneakers", "/{id}", "/filter", "/resources/**", "/static/**", "/images/**", "/icons/**", "/public/**").permitAll()
-                                .anyRequest().authenticated()
+                        .requestMatchers("/", "/sneakers", "/usuarios", "/{id}", "/filter", "/resources/**", "/static/**", "/images/**", "/icons/**", "/public/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
@@ -33,7 +33,7 @@ public class SecurityConfig {
 
         return http.build();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(16);
@@ -44,10 +44,10 @@ public class SecurityConfig {
     protected void userAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.jdbcAuthentication()
-            .dataSource(this.dataSource)
-            .passwordEncoder(passwordEncoder())
-            .usersByUsernameQuery("select username, password, enabled from users where username=?")
-            .authoritiesByUsernameQuery("select username, authority from authorities where username=?"); //ADICIONAR UMA TABELA 'AUTHORITIES' NO BANCO DE DADOS COM O PERMISSIONAMENTO DE CADA TIPO DE USUÁRIO
+                .dataSource(this.dataSource)
+                .passwordEncoder(passwordEncoder())
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select username, authority from authorities where username=?"); //ADICIONAR UMA TABELA 'AUTHORITIES' NO BANCO DE DADOS COM O PERMISSIONAMENTO DE CADA TIPO DE USUÁRIO
     }
 
 }
