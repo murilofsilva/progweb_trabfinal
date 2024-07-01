@@ -80,6 +80,19 @@ a{
     text-transform: uppercase;
 }
 
+.confirm-filter{
+    min-width: 50px;
+    min-height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #545151;
+    cursor: pointer;
+}
+
+.confirm-filter:hover{
+    background-color: #ccc614;
+}
+
 .profile-dropdown button {
     background-color: var(--main-background-color);
     color: var(--primary-text-color);
