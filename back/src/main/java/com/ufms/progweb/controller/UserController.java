@@ -22,9 +22,8 @@ public class UserController {
     private UserRepository repository;
 
     @PostMapping(path = "register")
-    public ResponseEntity<User> createUser(@RequestBody User user) throws Exception {
-        userService.createUser(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public User createUser(@RequestBody User user) throws Exception {
+        return userService.createUser(user);
     }
 
     @PostMapping(path = "login")
