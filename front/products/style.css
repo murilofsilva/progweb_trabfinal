@@ -89,6 +89,19 @@ a{
     cursor: pointer;
 }
 
+.confirm-search{
+    min-width: 50px;
+    min-height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #545151;
+    cursor: pointer;
+}
+
+.confirm-search:hover{
+    background-color: #ccc614;
+}
+
 .confirm-filter:hover{
     background-color: #ccc614;
 }
