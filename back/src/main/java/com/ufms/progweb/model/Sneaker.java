@@ -33,4 +33,10 @@ public class Sneaker {
     @Column
     private String description;
 
+    @Column
+    private String imageUrl;
+
+    @Column
+    private Character gender;
+
 }

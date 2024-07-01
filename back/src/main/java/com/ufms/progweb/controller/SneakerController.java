@@ -1,5 +1,8 @@
 package com.ufms.progweb.controller;
 
+import com.ufms.progweb.model.Sneaker;
+import com.ufms.progweb.repository.SneakerRepository;
+import com.ufms.progweb.services.SneakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,14 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import com.ufms.progweb.model.Sneaker;
-import com.ufms.progweb.services.SneakerService;
+import static com.ufms.progweb.utils.StringUtils.isNullOrEmpty;
+
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/sneakers")
 public class SneakerController {
 
     @Autowired
     private SneakerService sneakerService;
+
+    @Autowired
+    private SneakerRepository repository;
 
     @PostMapping
     public ResponseEntity<Sneaker> createSneaker(@RequestBody Sneaker sneaker) {
@@ -26,7 +33,7 @@ public class SneakerController {
     public ResponseEntity<Sneaker> updateSneaker(@PathVariable Long id, @RequestBody Sneaker sneakerDetails) {
         Sneaker updatedSneaker = sneakerService.updateSneaker(id, sneakerDetails);
         if (updatedSneaker != null) {
-                return new ResponseEntity<>(updatedSneaker, HttpStatus.OK);
+            return new ResponseEntity<>(updatedSneaker, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -34,11 +41,12 @@ public class SneakerController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSneaker(@PathVariable Long id) {
-        if(sneakerService.searchById(id) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else{
+        if (sneakerService.searchById(id) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else {
             sneakerService.deleteSneaker(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);}
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Sneaker> getSneakerById(@PathVariable Long id) {
@@ -49,26 +57,31 @@ public class SneakerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @GetMapping("/{name}")
-    public ResponseEntity<Sneaker> getSneakerByName(@RequestBody String name) {
-        Sneaker sneaker = sneakerService.searchByName(name);
-        if (sneaker != null) {
-            return new ResponseEntity<>(sneaker, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity getSneakerByName(@RequestBody String name) {
+        List<Sneaker> sneaker = sneakerService.searchByName(name);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     //@GetMapping("/filter/{size}/{brand}/{model}")
     //public ResponseEntity<List<Sneaker>> getSneakerByFilter(@RequestBody String size, String brand, String model) {
-      //  List<Sneaker> sneakers = (List<Sneaker>) sneakerService.filterSneakers(size, brand, model);
-        //return new ResponseEntity<>(sneakers, HttpStatus.OK);
+    //  List<Sneaker> sneakers = (List<Sneaker>) sneakerService.filterSneakers(size, brand, model);
+    //return new ResponseEntity<>(sneakers, HttpStatus.OK);
     //}
 
     @GetMapping
-    public ResponseEntity<List<Sneaker>> getAllSneakers() {
-        List<Sneaker> sneakers = (List<Sneaker>) sneakerService.searchAllSneakers();
+    public ResponseEntity<List<Sneaker>> sneakers(@RequestParam(name = "filter", required = false) String filter,
+                                                  @RequestParam(name = "gender", required = false) Character gender) {
+        List<Sneaker> sneakers;
+        if (!isNullOrEmpty(filter)) {
+            sneakers = repository.findByNameContainingIgnoreCase(filter);
+        } else if (!isNullOrEmpty(gender.toString())){
+            sneakers = repository.findByGender(gender);
+        } else {
+            sneakers = repository.findAll();
+        }
+
         return new ResponseEntity<>(sneakers, HttpStatus.OK);
     }
 

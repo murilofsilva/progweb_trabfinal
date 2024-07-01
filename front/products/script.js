@@ -1,36 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:8081/sneakers', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Lista de sneakers:', data);
-        displaySneakers(data);
-    })
-    .catch((error) => {
-        console.error('Erro ao buscar a lista de sneakers:', error);
+    var name;
+    if (document.location.search) {
+        let params = new URLSearchParams(document.location.search);
+        name = params.get("gender");
+    }
+    
+    fetchSneakers();
+    
+    function fetchSneakers() {
+        console.log(name)
+        fetch(name ? `http://localhost:8081/sneakers?gender=${name}` : 'http://localhost:8081/sneakers', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Lista de sneakers:', data);
+            displaySneakers(data);
+        })
+        .catch((error) => {
+            console.error('Erro ao buscar a lista de sneakers:', error);
+        });
+    }
+
+    // Função para lidar com o clique no botão de busca
+    const searchButton = document.querySelector('.confirm-search');
+    searchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        const searchTerm = document.querySelector('.search').value;
+        searchSneakers(searchTerm);
     });
 
-    function toggleDropdown() {
-        document.getElementById("dropdown-menu").classList.toggle("show");
-    }
-
-    window.onclick = function(event) {
-        if (!event.target.matches('.profile-dropdown button')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
+    function searchSneakers(searchTerm) {
+        fetch(`http://localhost:8081/sneakers?filter=${encodeURIComponent(searchTerm)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
             }
-        }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Resultado da busca:', data);
+            displaySneakers(data);
+        })
+        .catch((error) => {
+            console.error('Erro ao buscar sneakers filtrados:', error);
+        });
     }
-
-    document.querySelector('.profile-dropdown button').addEventListener('click', toggleDropdown);
 
     function displaySneakers(sneakers) {
         const container = document.getElementById('product-card-container');

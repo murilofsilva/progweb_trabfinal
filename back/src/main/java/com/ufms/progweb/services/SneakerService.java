@@ -42,11 +42,7 @@ public class SneakerService {
         return sneakerRepository.findById(id).orElse(null);
     }
 
-    public Sneaker searchByName(String name) {
+    public List<Sneaker> searchByName(String name) {
         return sneakerRepository.findByName(name);
-    }
-
-    public Iterable<Sneaker> searchAllSneakers() {
-        return sneakerRepository.findAll();
     }
 }
