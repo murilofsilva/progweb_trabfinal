@@ -63,7 +63,7 @@
     </header>
     <main>
         <div class="hero">
-            <div class="hero-item">
+            <div class="hero-item" id="product1" style="display:none;">
                 <div class="hero-info-container hero-half-container">
                     <p class="lancamento-tag">
                         Lançamento
@@ -86,10 +86,57 @@
                     <img class="hero-image" src="../public/image/dunk.png" alt="Dunk"/>
                 </div>
             </div>
+            <div class="hero-item" id="product2" style="display:none;">
+                <div class="hero-info-container hero-half-container">
+                    <p class="lancamento-tag">
+                        Lançamento
+                    </p>
+                    <h2 class="hero-title">
+                        Adidas Yeezy
+                    </h2>
+                    <p class="hero-description">
+                        Experimente o conforto e estilo do novo Adidas Yeezy
+                    </p>
+                    <p class="hero-price">
+                        R$ 1200,00
+                    </p>
+
+                    <button class="hero-button" tabindex="0">
+                        Comprar
+                    </button>
+                </div>
+                <div class="hero-image-container hero-half-container">
+                    <img class="hero-image" src="../public/image/yeezy350.png" alt="Yeezy"/>
+                </div>
+            </div>
+            <div class="hero-item" id="product3" style="display:none;">
+                <div class="hero-info-container hero-half-container">
+                    <p class="lancamento-tag">
+                        Lançamento
+                    </p>
+                    <h2 class="hero-title">
+                        Nike Impact 4
+                    </h2>
+                    <p class="hero-description">
+                        Experimente a nova versão do Nike Impact 4
+                    </p>
+                    <p class="hero-price">
+                        R$ 800,00
+                    </p>
+
+                    <button class="hero-button" tabindex="0">
+                        Comprar
+                    </button>
+                </div>
+                <div class="hero-image-container hero-half-container">
+                    <img class="hero-image" src="../public/image/impact4.png" alt="Impact 4"/>
+                </div>
+            </div>
+
             <div class="hero-slider-container">
-                <div class="hero-slider-box active"></div>
-                <div class="hero-slider-box"></div>
-                <div class="hero-slider-box"></div>
+                <div class="hero-slider-box active" onclick="showProduct(1)"></div>
+                <div class="hero-slider-box" onclick="showProduct(2)"></div>
+                <div class="hero-slider-box" onclick="showProduct(3)"></div>
             </div>
         </div>
     </main>
