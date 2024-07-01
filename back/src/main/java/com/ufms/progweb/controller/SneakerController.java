@@ -76,7 +76,7 @@ public class SneakerController {
         List<Sneaker> sneakers;
         if (!isNullOrEmpty(filter)) {
             sneakers = repository.findByNameContainingIgnoreCase(filter);
-        } else if (!isNullOrEmpty(gender.toString())){
+        } else if (gender != null){
             sneakers = repository.findByGender(gender);
         } else {
             sneakers = repository.findAll();
